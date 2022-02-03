@@ -7,6 +7,7 @@
             <div>
                 <label>Search title:  </label>
                 <input type="text" v-model="query"  @keyup="getResult(query)"  placeholder="Search here.."/>
+
             </div>
 
         </div>
@@ -26,8 +27,10 @@ export default {
   },
   methods: {
     getResult(query) {
-        axios.get('https://api.themoviedb.org/3/search/movie?  api_key=54db99dd2daf1d201355d467ba7c5a64query=' + query).then(response => { this.results = response.data.results })
-        console.log(this.results)
+        axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=0785e92f26ecdb9f62cd6d8a9cbc46ed`).then(response => 
+        { this.results = response.data.results 
+        console.log(this.results) })
+        
     }
   },
 }
