@@ -6,7 +6,7 @@
             </h1>
             <div>
                 <label>Search title:  </label>
-                <input type="text" v-model="search" placeholder="Search here.."/>
+                <input type="text" v-model="query"  @keyup="getResult(query)"  placeholder="Search here.."/>
             </div>
 
         </div>
@@ -14,15 +14,28 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
-    
+    data () {
+    return {
+      query: '',
+      results: ''
+    }
+  },
+  methods: {
+    getResult(query) {
+        axios.get('https://api.themoviedb.org/3/search/movie?  api_key=54db99dd2daf1d201355d467ba7c5a64query=' + query).then(response => { this.results = response.data.results })
+        console.log(this.results)
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
     .searchnav {
         width: 100%;
-        height: 80px;
         background: black;
         .navcontent {
             width: 1400px;
