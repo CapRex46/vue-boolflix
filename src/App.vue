@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-searcher/>
-    <movies-box/>
+    <movies-box :results="results"/>
   </div>
 </template>
 
