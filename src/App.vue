@@ -14,8 +14,7 @@ import MoviesBox from './components/MoviesBox.vue'
 export default {
   data () {
     return {
-      query: '',
-      results: []
+      results: [],
     }
   },
   methods: {

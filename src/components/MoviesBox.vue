@@ -1,7 +1,6 @@
 <template>
 <main>
         <div class="moviecontainer">
-        <div class="moviestitles">
             <div class="moviesinfos" v-for='result in results' :key='result.id'>
                 <img v-bind:src="'http://image.tmdb.org/t/p/w500/' +    result.poster_path" width='100px'>
                 <div class="moviestxt">
@@ -9,7 +8,6 @@
                     <p>{{result.original_title}}</p>
                 </div>
             </div>
-        </div>
 
     </div>
 </main>
@@ -20,19 +18,24 @@
 
 
 export default {
+    data () {
+        return{
+            hover: false
+        }
+    },
     components: {
-        
     },
     props: {
         results: [],
-    }
+    },
+
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     .moviecontainer {
         width: 100%;
-        height: 900px;
+        height: 1920px;
         background: rgb(77, 75, 75);
         display: flex;
         flex-wrap: wrap;
@@ -41,6 +44,8 @@ export default {
                 height: 300px;
                 color: whitesmoke;
                 padding: 30px;
+                margin: 50px;
+                margin-top: 150px;
                 img {
                    width: 200px;
                    transition: .5s; 
@@ -49,7 +54,7 @@ export default {
                        cursor: pointer;
                        transition: .5s;
                        width: 250px;
-                       .moviestxt p {
+                       .moviestxt {
                            text-align: center;
                        }
                    } 
@@ -57,4 +62,6 @@ export default {
             } 
         
     }
+    
 </style>
+

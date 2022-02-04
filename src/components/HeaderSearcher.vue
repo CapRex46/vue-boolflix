@@ -5,7 +5,7 @@
                 BOOLFLIX
             </h1>
             <div class="searcharea">
-                <input type="text" v-model="query"  @keyup='$emit("query",getResult)'  placeholder="Search here.."/>
+                <input type="text" v-model="query"  @keyup='$emit("query",query)'  placeholder="Search here.."/>
             </div>
         </div>
     </div> 
@@ -18,6 +18,11 @@
 
 
 export default {
+    data() {
+        return{
+            query: ''
+        }
+    }
 
 }
 </script>
