@@ -1,16 +1,31 @@
 <template>
   <div id="app">
-    <header-searcher/>
+    <header-searcher @query="getResult"/>
     <movies-box :results="results"/>
   </div>
 </template>
 
 <script>
 
+import axios from 'axios'
 import HeaderSearcher from './components/HeaderSearcher.vue'
 import MoviesBox from './components/MoviesBox.vue'
 
 export default {
+  data () {
+    return {
+      query: '',
+      results: []
+    }
+  },
+  methods: {
+    getResult(query) {
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=${query}`).then(response => 
+        { this.results = response.data.results 
+        console.log(this.results) })
+        
+    }
+  },
   name: 'App',
   components: {
     HeaderSearcher,

@@ -6,13 +6,8 @@
             </h1>
             <div>
                 <label>Search title:  </label>
-                <input type="text" v-model="query"  @keyup="getResult(query)"  placeholder="Search here.."/>
+                <input type="text" v-model="query"  @keyup='$emit("query",getResult)'  placeholder="Search here.."/>
             </div>
-                <div class="results" v-for='result in results' :key='result.id'>
-                    <img v-bind:src="'http://image.tmdb.org/t/p/w500/' +    result.poster_path" width='100px'>
-                    <p>{{result.title}}</p>
-                    <p>{{result.original_title}}</p>
-                </div>
         </div>
     </div> 
 </template>
@@ -21,23 +16,10 @@
 
 // commento 
 
-import axios from 'axios'
+
 
 export default {
-    data () {
-    return {
-      query: '',
-      results: ''
-    }
-  },
-  methods: {
-    getResult(query) {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=${query}`).then(response => 
-        { this.results = response.data.results 
-        console.log(this.results) })
-        
-    }
-  },
+
 }
 </script>
 

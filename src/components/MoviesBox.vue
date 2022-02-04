@@ -2,8 +2,8 @@
 <main>
         <div class="moviecontainer">
         <div class="moviestitles" v-for='result in results' :key='result.id'>
-                <header-searcher/>
                 <p>{{result.title}}</p>
+                <p>{{result.original_title}}</p>
                 <img v-bind:src="'http://image.tmdb.org/t/p/w500/' +    result.poster_path" width='100px'>
         </div>
     </div>
@@ -13,14 +13,13 @@
 
 <script>
 
-import HeaderSearcher from './HeaderSearcher.vue'
 
 export default {
     components: {
-        HeaderSearcher,
+        
     },
     props: {
-        results: Array,
+        results: [],
     }
 }
 </script>
