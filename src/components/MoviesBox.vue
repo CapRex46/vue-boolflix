@@ -15,6 +15,8 @@
                         class="fas fa-star"></i>
                         </div>
                     </div>
+                <button @click="isShow = !isShow">TRAMA</button>
+                <div v-show="isShow">{{result.overview}}</div>
                 </div>
         </div>
             
@@ -29,7 +31,7 @@
 export default {
     data () {
         return{
-            hover: false
+            isShow: false,
         }
     },
     components: {
@@ -39,7 +41,8 @@ export default {
     },
     methods: {
         ratings: function(number) {
-        return Math.round(number / 2)
+        return Math.round(number / 2);
+        
         }
     }
 }
@@ -48,10 +51,11 @@ export default {
 <style lang="scss" >
     .moviecontainer {
         width: 100%;
-        height: 1920px;
+        height: 1000px;
         background: rgb(77, 75, 75);
         display: flex;
         flex-wrap: wrap;
+        overflow-y: auto;
             .moviesinfos {
                 width: 200px;
                 height: 300px;
@@ -67,9 +71,8 @@ export default {
                        cursor: pointer;
                        transition: .5s;
                        width: 250px;
-                       .moviestxt {
-                           text-align: center;
-                       }
+
+                    
                    } 
                 }
             } 
