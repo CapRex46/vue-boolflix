@@ -4,11 +4,20 @@
             <div class="moviesinfos" v-for='result in results' :key='result.id'>
                 <img v-bind:src="'http://image.tmdb.org/t/p/w500/' +    result.poster_path" width='100px'>
                 <div class="moviestxt">
+                    <p>{{result.original_name}}</p>
                     <p>{{result.title}}</p>
                     <p>{{result.original_title}}</p>
+                    <div class="reviews">
+                        <div>
+                        <i 
+                        v-for="index in ratings(result.vote_average)"
+                        :key="index"
+                        class="fas fa-star"></i>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
+        </div>
+            
     </div>
 </main>
 
@@ -28,7 +37,11 @@ export default {
     props: {
         results: [],
     },
-
+    methods: {
+        ratings: function(number) {
+        return Math.round(number / 2)
+        }
+    }
 }
 </script>
 
